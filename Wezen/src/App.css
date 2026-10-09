@@ -1,23 +1,30 @@
 @import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 @theme{
-  --color-background: var(--background-color);
+  --color-background: var(--primary-color);
   --color-secondary: var(--secondary-color);
   --color-text: var(--text-color);
+  ---color-box-fill: var(--box-fill-color);
+  --color-nav-text: var(--nav-text-color);
   --color-white: var(--white-color);
   --color-black: var(--black-color);
 }
 
 :root {
-  --background-color: #DDE8DC;
-  --secondary-color: #BEDEB8;
-  --text-color: #73807F;
-  --white-color: #ffffff;
+  --primary-color: #E6E6E6;
+  --secondary-color: #6B8F71;
+  --text-color: #696969;
+  --box-fill-color: #DEDEDE;
+  --nav-text-color: #DDFBDC;
+  --white-color: #EAEAEA;
   --black-color: #000000;
 }
 
 body{
-    background-color: var(--background-color);
+  background-color: var(--primary-color);
 }
 
 .header-container {
@@ -29,11 +36,31 @@ body{
 .sidebar {
   width: 250px;
   background-color: var(--secondary-color);
-  color: var(--text-color);
+  color: var(--nav-text-color);
   padding: 20px;
   flex-shrink: 0;
 }
 
 .sidebar ul li{
-    list-style-image: none;
+  list-style-image: none;
+}
+
+.WezenTitle{
+  font-size:2.5em;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: var(--nav-text-color);
+}
+
+.Profile-Name{
+  font-size: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+.Description{
+  text-align: start;
 }
