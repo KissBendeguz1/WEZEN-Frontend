@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Egy recept – Wezen</title>
+<link rel="icon" href="assets/wezen-icon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-clip" viewBox="0 0 24 24"><path d="M8 4h8v3H8zM8 5.5H6a1 1 0 0 0-1 1V21h14V6.5a1 1 0 0 0-1-1h-2"/></symbol>
+    <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20s-8-5-8-11a4.5 4.5 0 0 1 8-2.5A4.5 4.5 0 0 1 20 9c0 6-8 11-8 11z"/></symbol>
+    <symbol id="i-img" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="4"/><circle cx="9" cy="9" r="2"/><path d="M4 19l9-9 7 7"/></symbol>
+    <symbol id="i-clock" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></symbol>
+    <symbol id="i-cup" viewBox="0 0 24 24"><path d="M5 9h11v5a4 4 0 0 1-4 4H9a4 4 0 0 1-4-4zM16 10h2a2 2 0 0 1 0 4h-2M6 4v2M10 4v2"/></symbol>
+    <symbol id="i-pie" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 3v9h9"/></symbol>
+    <symbol id="i-like" viewBox="0 0 24 24"><path d="M7 11v9H4v-9zM7 11l4-8c2 0 2.5 1.5 2 4h6a2 2 0 0 1 2 2.3l-1 6a2 2 0 0 1-2 1.7H7"/></symbol>
+    <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></symbol>
+    <symbol id="i-gear" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3.5"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/></symbol>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"/><path d="M16 16l5 5"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16zM13 7l4 4"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3zM5 17a3 3 0 0 1 3-3h11"/></symbol>
+    <symbol id="i-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></symbol>
+    <symbol id="i-star" viewBox="0 0 24 24"><path d="M12 3l2.7 5.6 6.1.9-4.4 4.3 1 6.1L12 17l-5.4 2.9 1-6.1L3.2 9.5l6.1-.9z"/></symbol>
+    <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-chev" viewBox="0 0 24 24"><path d="M5 9l7 7 7-7"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  </defs>
+</svg>
+
+<div class="app">
+  <aside class="side">
+    <a class="logo" href="index.html">WEZEN</a>
+    <nav>
+      <a href="naplo.html" data-nav="diary"><svg class="ic"><use href="#i-clip"/></svg>Napló</a>
+      <a href="recept.html" data-nav="recipes" class="on" aria-current="page"><svg class="ic"><use href="#i-heart"/></svg>Recept</a>
+      <a href="social.html" data-nav="social"><svg class="ic"><use href="#i-img"/></svg>Social</a>
+    </nav>
+    <div class="me">
+      <div class="me-head"><span class="av"><svg class="ic"><use href="#i-user"/></svg></span><div><b>Bendi</b><small>Fogyás</small></div></div>
+      <div class="meter"><span>Calories</span><i>1800/2000</i><em class="b-cal"></em></div>
+      <div class="meter"><span>Water</span><i>1.85l/2l</i><em class="b-water"></em></div>
+      <div class="meter"><span>Idkmi</span><i>1800/2000</i><em class="b-idk"></em></div>
+      <svg class="ic gear"><use href="#i-gear"/></svg>
+    </div>
+  </aside>
+
+  <main>
+    <section class="detail">
+      <div class="card head">
+        <div class="head-top">
+          <div><h1>Egy recept neve</h1><p>A receptek rövid, étvágygerjesztő összefoglalója kerül ide 1-2 mondatban (pl. a fogás jellege, ízvilága, vagy hogy milyen alkalomra ajánlott).</p></div>
+          <div class="pills"><span class="pill"><svg class="ic"><use href="#i-clock"/></svg>25-30 min</span><span class="pill"><svg class="ic"><use href="#i-cup"/></svg>Könnyű</span><span class="pill"><svg class="ic"><use href="#i-pie"/></svg>Fehérjedús</span><span class="pill"><svg class="ic"><use href="#i-heart"/></svg>Vegán</span></div>
+        </div>
+        <div class="head-body">
+          <div class="gallery">
+            <div class="ph main"><svg class="ic"><use href="#i-img"/></svg></div>
+            <div class="ph"><svg class="ic"><use href="#i-img"/></svg></div><div class="ph"><svg class="ic"><use href="#i-img"/></svg></div>
+            <div class="ph"><svg class="ic"><use href="#i-img"/></svg></div><div class="ph more"><svg class="ic"><use href="#i-img"/></svg><b>+5</b></div>
+          </div>
+          <div class="macros"><h4>Macrók / 100g</h4><dl><dt>Kcal:</dt><dd>500</dd><dt>Fehérje:</dt><dd>70g</dd><dt>Zsír:</dt><dd>60g</dd><dt>Cukor:</dt><dd>50g</dd><dt>Rostok:</dt><dd>30g</dd></dl></div>
+          <div class="side-ctl">
+            <div class="stepper"><button>−</button><span>4 adag</span><button>+</button></div>
+            <div class="stepper"><button>−</button><span>600g</span><button>+</button></div>
+            <div class="stats"><span class="pill"><svg class="ic"><use href="#i-like"/></svg>676</span><span class="pill"><svg class="ic"><use href="#i-chat"/></svg>13</span><span class="pill"><svg class="ic"><use href="#i-heart"/></svg>69</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="cols">
+        <div class="card prep"><h2>Elkészítés:</h2>
+          <ol>
+            <li><b>Előkészítés</b> Készítsd elő az összes hozzávalót. Tisztítsd meg és szeleteld fel a zöldségeket, mérd ki a fűszereket és a folyadékokat.</li>
+            <li><b>Alapok pirítása</b> Egy nagyobb serpenyőben vagy lábasban melegítsd fel az olívaolajat közepes lángon. Add hozzá a felkockázott hagymát, és párold üvegesre kb. 3-5 perc alatt. Add hozzá a zúzott fokhagymát, és pirítsd még 1 percig, amíg illatos nem lesz.</li>
+            <li><b>A fő összetevők elkészítése</b> Add hozzá a fő összetevőt (pl. hús vagy zöldségek), majd fűszerezd sóval és borssal. Pirítsd fehéredésig vagy enyhe pirulásig kb. 8-10 percig.</li>
+            <li><b>Összefőzés / Mártás készítése</b> Öntsd hozzá a tejszínt vagy alaplevet, keverd jól össze, majd csökkentsd a lángot. Gyöngyöztetve főzd tovább 10-15 percig, amíg a mártás besűrűsödik és az ízek összeérnek.</li>
+          </ol>
+        </div>
+        <div class="card ingr"><h2>Hozzávalók:</h2><ul id="ingr"></ul></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
