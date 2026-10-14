@@ -1,19 +1,27 @@
 import './App.css'
-import Header from './Header'
+import { Routes, Route, Navigate } from 'react-router-dom'
+import Header from './components/Header'
+import Naplo from './sites/Naplo'
+import Recipe from './sites/Recipe'
+import CustomRecipe from './sites/CustomRecipe'
+import Social from './sites/Social'
+import Profile from './sites/Profile'
 
 function App() {
-
   return (
-    <>
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-      </head>
-        <body>
-          <Header/>
-        </body>
-    </>
+    <div className="flex min-h-screen">
+      <Header />
+      <main className="flex-1">
+        <Routes>
+          <Route path="/" element={<Navigate to="/naplo" />} />
+          <Route path="/naplo" element={<Naplo />} />
+          <Route path="/recept" element={<Recipe />} />
+          <Route path="/recept/sajat" element={<CustomRecipe />} />
+          <Route path="/social" element={<Social />} />
+          <Route path="/profil" element={<Profile />} />
+        </Routes>
+      </main>
+    </div>
   )
 }
 

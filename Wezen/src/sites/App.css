@@ -1,0 +1,65 @@
+@import "tailwindcss";
+
+@theme{
+  --color-background: var(--primary-color);
+  --color-secondary: var(--secondary-color);
+  --color-text: var(--text-color);
+  ---color-box-fill: var(--box-fill-color);
+  --color-nav-text: var(--nav-text-color);
+  --color-white: var(--white-color);
+  --color-black: var(--black-color);
+}
+
+:root {
+  --primary-color: #E6E6E6;
+  --secondary-color: #6B8F71;
+  --text-color: #696969;
+  --box-fill-color: #DEDEDE;
+  --nav-text-color: #DDFBDC;
+  --white-color: #EAEAEA;
+  --black-color: #000000;
+}
+
+body{
+  background-color: var(--primary-color);
+}
+
+.header-container {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+
+.sidebar {
+  width: 250px;
+  background-color: var(--secondary-color);
+  color: var(--nav-text-color);
+  padding: 20px;
+  flex-shrink: 0;
+}
+
+.sidebar ul li{
+  list-style-image: none;
+}
+
+.WezenTitle{
+  font-size:2.5em;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  color: var(--nav-text-color);
+}
+
+.Profile-Name{
+  font-size: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  padding: 0;
+  margin: 0;
+}
+
+.Description{
+  text-align: start;
+}
