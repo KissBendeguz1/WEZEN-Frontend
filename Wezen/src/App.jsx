@@ -6,15 +6,15 @@ import Recipe from './sites/Recipe'
 import CustomRecipe from './sites/CustomRecipe'
 import Social from './sites/Social'
 import Profile from './sites/Profile'
+import LandingPage from './sites/LandingPage'
 
 function App() {
   return (
     <div className="flex min-h-screen">
       <Header />
       <main className="flex-1">
-        <h1 className='text-center'>Wezen</h1>
         <Routes>
-          <Route path="/" element={<Navigate to="/App" />} />
+          <Route path="/" element={<LandingPage to="/LandingPage" />} />
           <Route path="/naplo" element={<Naplo />} />
           <Route path="/recept" element={<Recipe />} />
           <Route path="/recept/sajat" element={<CustomRecipe />} />

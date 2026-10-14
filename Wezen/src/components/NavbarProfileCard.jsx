@@ -12,16 +12,16 @@ function NavbarProfileCard() {
             <div>
                 <div className="grid grid-cols-2 grid-flow-col grid-rows-1">
                     <h3 className="text-left">Calories</h3>
-                    <p className="text-right">1800/2000</p>
+                    <p className="text-right">1000/2000</p>
                 </div>
-                <hr/>
+                <hr className="h-1.5 w-full bg-linear-to-r from-orange-500 from-50% to-gray-500 to-50% rounded-full border-0" />
             </div>
             <div>
                 <div className="grid grid-cols-2 grid-flow-col grid-rows-1">
-                    <h3 className="text-left">Calories</h3>
-                    <p className="text-right">1800/2000</p>
+                    <h3 className="text-left">Water</h3>
+                    <p className="text-right">1.85L/2L</p>
                 </div>
-                <hr/>
+                <hr className="h-1.5 w-full bg-linear-to-r from-blue-500 from-90% to-gray-500 to-92% rounded-full border-0" />
             </div>
         </div>
         <a className="text-[0.8em] p-0 m-0" href="/profil">Profile</a>
