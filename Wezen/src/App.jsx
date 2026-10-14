@@ -12,8 +12,9 @@ function App() {
     <div className="flex min-h-screen">
       <Header />
       <main className="flex-1">
+        <h1 className='text-center'>Wezen</h1>
         <Routes>
-          <Route path="/" element={<Navigate to="/naplo" />} />
+          <Route path="/" element={<Navigate to="/App" />} />
           <Route path="/naplo" element={<Naplo />} />
           <Route path="/recept" element={<Recipe />} />
           <Route path="/recept/sajat" element={<CustomRecipe />} />

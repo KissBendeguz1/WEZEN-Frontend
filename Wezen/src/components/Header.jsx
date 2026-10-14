@@ -21,9 +21,7 @@ function Header() {
             </li>
           ))}
         </ul>
-        <NavLink to="/profil">
           <NavbarProfileCard/>
-        </NavLink>
       </nav>
     </div>
   );
