@@ -1,6 +1,6 @@
 function NavbarProfileCard() {
     return (
-    <div className="grid absolute bottom-2 left-3 bg-[var(--box-fill-color)] w-50 h-50 rounded-2xl p-2 text-[var(--color-text)]">
+    <div className="grid fixed bottom-2 left-3 bg-[var(--box-fill-color)] w-50 h-50 rounded-2xl p-2 text-[var(--color-text)]">
         <div className="grid grid-cols-2 grid-flow-col grid-rows-1">
             <img src="https://via.placeholder.com/100" alt="Profile" className="w-10 h-10 rounded-full ml-2 mt-2"/>
             <div className="">
