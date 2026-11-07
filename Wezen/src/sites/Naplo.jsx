@@ -1,6 +1,6 @@
 function Naplo() {
   return (
-      <div className="grid grid-cols-[60%_0%_40%] grid-flow-col grid-rows-2 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
           <div>
               <div className="grid w-[90%] bg-[var(--color-box-fill)] pt-5 pb-20 mt-5 rounded-2xl shadow-md">
                 <div className="grid h-auto w-90 mx-auto pb-5">
@@ -15,7 +15,7 @@ function Naplo() {
                             <p>Étel Neve</p>
                           </div>
                           <div>
-                            <p>200g 600 cal</p> 
+                            <p>200g 600 cal</p>
                           </div>
                       </div>
                       <img src="https://placehold.co/50x50"/>
@@ -49,22 +49,7 @@ function Naplo() {
               </div>
           </div>
           <div>
-            <div className="grid grid-flow-col grid-rows-[10%_0%_90%] w-[90%] bg-[var(--color-box-fill)] rounded-2xl shadow-xl mb-10 ">
-              <div className="m-10">
-                <select name="" id="">
-                  <option value="asd">asd</option>
-                </select>
-                <select name="" id="">
-                  <option value="asd">asd</option>
-                </select>
-              </div>
-              <div className="m-10">
-                <img src="https://placehold.co/500x200"/>
-              </div>
-            </div>
-          </div>
-          <div>
-              <div className="grid w-100 bg-[var(--color-box-fill)] p-25 mt-5 rounded-2xl shadow-xl">
+            <div className="grid w-100 bg-[var(--color-box-fill)] p-25 mt-5 rounded-2xl shadow-xl">
                 <div className="grid grid-cols-1 grid-flow-col grid-rows-2">
                   <div className="pb-15">
                       <div className="grid grid-cols-2 grid-flow-col grid-rows">
@@ -84,20 +69,35 @@ function Naplo() {
               </div>
           </div>
           <div>
-              <div className="grid grid-flow-col grid-rows-[12%_50%_12%_12%] w-100 bg-[var(--color-box-fill)] rounded-2xl shadow-xl p-25 mt-5 mb-10">
-                <div className="mb-20 text-[0.65em]">
+            <div className="grid grid-flow-col grid-rows-[10%_0%_90%] w-[90%] bg-[var(--color-box-fill)] rounded-2xl shadow-xl mb-10 ">
+              <div className="m-10">
+                <select name="" id="">
+                  <option value="asd">asd</option>
+                </select>
+                <select name="" id="">
+                  <option value="asd">asd</option>
+                </select>
+              </div>
+              <div className="m-10">
+                <img src="https://placehold.co/500x200"/>
+              </div>
+            </div>
+          </div>
+          <div>
+              <div className="grid grid-flow-col grid-rows-[25%_50%_12%_12%] w-100 bg-[var(--color-box-fill)] rounded-2xl shadow-xl text-center justify-center">
+                <div className=" text-[0.65em]">
                   <h1>0.5l / 2l</h1>
                 </div>
-                <div className="mb-20">
+                <div className="h-max">
                   <img src="https://placehold.co/200x200"/>
                 </div>
-                <div className="mb-20">
-                  <button>ok</button>
-                  <input type="text" name="" id="" className="w-10 ml-5 mr-5" />
-                  <button>nem</button>
+                <div className="">
+                  <button className="bg-blue-400 rounded-xl p-2">ok</button>
+                  <input type="text" name="" id="" className="w-10 ml-5 mr-5 bg-blue-400"/>
+                  <button className="bg-blue-400 rounded-xl p-2">nem</button>
                 </div>
-                <div className="mb-20">
-                  <button>Hozzáadás</button>
+                <div className="">
+                  <button className="bg-blue-400 rounded-2xl">Hozzáadás</button>
                 </div>
               </div>
           </div>

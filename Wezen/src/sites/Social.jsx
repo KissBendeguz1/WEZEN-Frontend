@@ -1,7 +1,12 @@
 function Social() {
   return (
-    <div className="p-8">
-      <h1 className="text-3xl font-bold text-secondary">Social</h1>
+    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-4">
+      <div>
+        <h1>asd</h1>
+      </div>
+      <div>
+        <h1>asd</h1>
+      </div>
     </div>
   );
 }

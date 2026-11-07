@@ -11,17 +11,19 @@ function Header() {
   return (
     <div className="header-container min-h-screen w-64">
       <nav className="sidebar relative p-5">
-        <h1 className="WezenTitle">Wezen</h1>
-        <ul className="space-y-3">
-          {links.map(({ to, label }) => (
-            <li key={to} className="font-serif text-left ml-8 font-bold text-[1.3em] tracking-wider pb-0.5 hover:text-[1.35em]">
-              <NavLink to={to} className={({ isActive }) => isActive ? 'underline' : ''}>
-                {label}
-              </NavLink>
-            </li>
-          ))}
-        </ul>
+        <div className='fixed'>
+          <h1 className="WezenTitle">Wezen</h1>
+            <ul className="space-y-3">
+              {links.map(({ to, label }) => (
+                <li key={to} className="font-serif text-left ml-8 font-bold text-[1.3em] tracking-wider pb-.5 hover:text-[1.35em] sticky">
+                  <NavLink to={to} className={({ isActive }) => isActive ? 'underline' : ''}>
+                    {label}
+                  </NavLink>
+                </li>
+              ))}
+            </ul>
           <NavbarProfileCard/>
+        </div>
       </nav>
     </div>
   );
