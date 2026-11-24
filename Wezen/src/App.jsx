@@ -1,19 +1,24 @@
-import './App.css'
-import { Routes, Route, Navigate } from 'react-router-dom'
-import Header from './components/Header'
-import Naplo from './sites/Naplo'
-import Recipe from './sites/Recipe'
-import CustomRecipe from './sites/CustomRecipe'
-import Social from './sites/Social'
-import Profile from './sites/Profile'
-import LandingPage from './sites/LandingPage'
+import "./App.css";
+import { Routes, Route, useLocation } from "react-router-dom";
+import Header from "./components/Header";
+import Naplo from "./sites/Naplo";
+import Recipe from "./sites/Recipe";
+import CustomRecipe from "./sites/CustomRecipe";
+import Social from "./sites/Social";
+import Profile from "./sites/Profile";
+import LandingPage from "./sites/LandingPage";
+import LoginPage from "./sites/LoginPage"
 
 function App() {
+  const { pathname } = useLocation();
+
   return (
     <div className="flex min-h-screen">
-      <Header />
+      {pathname !== "/login" && <Header />}
       <main className="flex-1">
         <Routes>
+          <Route path="/login" element={<LoginPage />} />
+
           <Route path="/" element={<LandingPage to="/LandingPage" />} />
           <Route path="/naplo" element={<Naplo />} />
           <Route path="/recept" element={<Recipe />} />
@@ -23,7 +28,7 @@ function App() {
         </Routes>
       </main>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
