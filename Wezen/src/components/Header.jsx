@@ -7,6 +7,7 @@ const links = [
   { to: '/social', label: 'Social' },
 ]
 
+
 function Header() {
   return (
     <div className="header-container min-h-screen w-64">
