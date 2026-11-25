@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header";
-import Naplo from "./sites/Naplo";
+import { Naplo } from "./sites/Naplo";
 import Recipe from "./sites/Recipe";
 import CustomRecipe from "./sites/CustomRecipe";
 import Social from "./sites/Social";
