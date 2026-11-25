@@ -1,8 +1,36 @@
+import axios from "axios";
 import { useState } from "react";
+
+function getRequestErrorMessage(error, action) {
+  if (axios.isAxiosError(error)) {
+    const responseData = error.response?.data;
+    const responseMessage =
+      typeof responseData === "string"
+        ? responseData
+        : responseData &&
+            typeof responseData === "object" &&
+            "message" in responseData &&
+            typeof responseData.message === "string"
+          ? responseData.message
+          : "";
+
+    return (
+      responseMessage.trim() ||
+      (error.response
+        ? `${action} sikertelen (HTTP ${error.response.status}).`
+        : "Nem sikerült elérni a szervert.")
+    );
+  }
+
+  return `Váratlan hiba történt a ${action} során.`;
+}
 
 function LoginForm({ onShowRegister }) {
   const [credentials, setCredentials] = useState({ identifier: "", password: "" });
   const [touched, setTouched] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitSuccess, setSubmitSuccess] = useState("");
 
   const identifier = credentials.identifier.trim();
   const identifierLooksLikeEmail = identifier.includes("@");
@@ -18,16 +46,40 @@ function LoginForm({ onShowRegister }) {
       ...currentCredentials,
       [field]: event.target.value,
     }));
+    setSubmitError("");
+    setSubmitSuccess("");
   };
 
   const markTouched = (field) => () => {
     setTouched((currentTouched) => ({ ...currentTouched, [field]: true }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!formIsValid) {
+    if (!formIsValid || isSubmitting) {
       return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccess("");
+
+    try {
+      await axios.post(
+        "/Login/Login",
+        {
+          username: identifier,
+          password: credentials.password,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+      setSubmitSuccess("Sikeres bejelentkezés.");
+    } catch (error) {
+      setSubmitError(getRequestErrorMessage(error, "A bejelentkezés"));
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -97,13 +149,23 @@ function LoginForm({ onShowRegister }) {
             </p>
           )}
         </div>
+        {submitError && (
+          <p className="mt-3 text-sm text-red-600" role="alert">
+            {submitError}
+          </p>
+        )}
+        {submitSuccess && (
+          <p className="mt-3 text-sm text-secondary" role="status">
+            {submitSuccess}
+          </p>
+        )}
         <div className="justify-center text-center">
           <button
             type="submit"
-            disabled={!formIsValid}
+            disabled={!formIsValid || isSubmitting}
             className="my-5 w-64 rounded-xl border border-secondary bg-secondary py-2 text-nav-text hover:bg-nav-text hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Bejelentkezés
+            {isSubmitting ? "Bejelentkezés..." : "Bejelentkezés"}
           </button>
         </div>
         <div className="justify-center text-center">
@@ -125,6 +187,9 @@ function RegisterForm({ onShowLogin }) {
     username: "",
   });
   const [touched, setTouched] = useState({});
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState("");
+  const [submitSuccess, setSubmitSuccess] = useState("");
 
   const emailIsValid = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email.trim());
   const passwordRules = [
@@ -158,16 +223,42 @@ function RegisterForm({ onShowLogin }) {
       ...currentForm,
       [field]: event.target.value,
     }));
+    setSubmitError("");
+    setSubmitSuccess("");
   };
 
   const markTouched = (field) => () => {
     setTouched((currentTouched) => ({ ...currentTouched, [field]: true }));
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    if (!formIsValid) {
+    if (!formIsValid || isSubmitting) {
       return;
+    }
+
+    setIsSubmitting(true);
+    setSubmitError("");
+    setSubmitSuccess("");
+
+    try {
+      await axios.post(
+        "/Login/newUser",
+        {
+          name: form.fullName.trim(),
+          username: form.username.trim(),
+          email: form.email.trim(),
+          password: form.password,
+        },
+        {
+          headers: { "Content-Type": "application/json" },
+        },
+      );
+      setSubmitSuccess("Sikeres regisztráció.");
+    } catch (error) {
+      setSubmitError(getRequestErrorMessage(error, "A regisztráció"));
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -306,13 +397,23 @@ function RegisterForm({ onShowLogin }) {
 
           <p className="text-xs">Minden mező kitöltése kötelező</p>
         </div>
+        {submitError && (
+          <p className="mt-3 text-sm text-red-600" role="alert">
+            {submitError}
+          </p>
+        )}
+        {submitSuccess && (
+          <p className="mt-3 text-sm text-secondary" role="status">
+            {submitSuccess}
+          </p>
+        )}
         <div className="justify-center text-center">
           <button
             type="submit"
-            disabled={!formIsValid}
+            disabled={!formIsValid || isSubmitting}
             className="my-5 w-64 rounded-xl border border-secondary bg-secondary py-2 text-nav-text hover:bg-nav-text hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
           >
-            Regisztráció
+            {isSubmitting ? "Regisztráció..." : "Regisztráció"}
           </button>
         </div>
       </form>
