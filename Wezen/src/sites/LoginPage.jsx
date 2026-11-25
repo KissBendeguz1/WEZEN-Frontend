@@ -1,10 +1,40 @@
 import { useState } from "react";
 
 function LoginForm({ onShowRegister }) {
+  const [credentials, setCredentials] = useState({ identifier: "", password: "" });
+  const [touched, setTouched] = useState({});
+
+  const identifier = credentials.identifier.trim();
+  const identifierLooksLikeEmail = identifier.includes("@");
+  const identifierIsValid =
+    identifier.length > 0 &&
+    (!identifierLooksLikeEmail ||
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(identifier));
+  const passwordIsValid = credentials.password.length > 0;
+  const formIsValid = identifierIsValid && passwordIsValid;
+
+  const updateCredential = (field) => (event) => {
+    setCredentials((currentCredentials) => ({
+      ...currentCredentials,
+      [field]: event.target.value,
+    }));
+  };
+
+  const markTouched = (field) => () => {
+    setTouched((currentTouched) => ({ ...currentTouched, [field]: true }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (!formIsValid) {
+      return;
+    }
+  };
+
   return (
-    <div className="m-auto mt-10 flex h-fit w-fit flex-col items-center rounded-xl bg-box-fill p-5">
-      <div>
-        <h1>Wezen - Bejelentkezés</h1>
+    <div className="m-auto mt-10 flex h-fit w-fit flex-col items-center rounded-xl bg-box-fill p-5 text-text">
+      <div className="text-secondary">
+        <h1 className="text-text">Wezen</h1>
       </div>
       <div className="m-5 flex flex-row items-center justify-center gap-5">
         <button
@@ -20,7 +50,7 @@ function LoginForm({ onShowRegister }) {
           Regisztráció
         </button>
       </div>
-      <div className="w-64 justify-start">
+      <form className="w-64 justify-start" onSubmit={handleSubmit} noValidate>
         <div className="flex flex-col gap-3">
           <label className="w-auto" htmlFor="loginname">
             Email / Felhasználónév
@@ -31,20 +61,48 @@ function LoginForm({ onShowRegister }) {
             type="text"
             placeholder="abc@email.com / Felhnev1"
             name="loginname"
+            value={credentials.identifier}
+            onChange={updateCredential("identifier")}
+            onBlur={markTouched("identifier")}
+            aria-invalid={
+              (touched.identifier || identifier.length > 0) &&
+              !identifierIsValid
+            }
           />
+          {(touched.identifier || identifier.length > 0) &&
+            !identifierIsValid && (
+              <p className="text-xs text-red-600" role="alert">
+                {identifier.length === 0
+                  ? "Az email vagy felhasználónév megadása kötelező."
+                  : "Hibás email-formátum."}
+              </p>
+            )}
           <label className="w-auto" htmlFor="loginpassword">
             Jelszó
           </label>
           <input
             id="loginpassword"
             className="w-auto rounded-xl border border-secondary bg-white p-1 text-text"
-            type="text"
+            type="password"
             placeholder="*****"
             name="loginpassword"
+            value={credentials.password}
+            onChange={updateCredential("password")}
+            onBlur={markTouched("password")}
+            aria-invalid={touched.password && !passwordIsValid}
           />
+          {touched.password && !passwordIsValid && (
+            <p className="text-xs text-red-600" role="alert">
+              A jelszó megadása kötelező.
+            </p>
+          )}
         </div>
         <div className="justify-center text-center">
-          <button className="my-5 w-64 rounded-xl border border-secondary bg-secondary py-2 text-nav-text hover:bg-nav-text hover:text-secondary">
+          <button
+            type="submit"
+            disabled={!formIsValid}
+            className="my-5 w-64 rounded-xl border border-secondary bg-secondary py-2 text-nav-text hover:bg-nav-text hover:text-secondary disabled:cursor-not-allowed disabled:opacity-50"
+          >
             Bejelentkezés
           </button>
         </div>
@@ -53,7 +111,7 @@ function LoginForm({ onShowRegister }) {
             Elfelejtett jelszó
           </a>
         </div>
-      </div>
+      </form>
     </div>
   );
 }
@@ -114,9 +172,9 @@ function RegisterForm({ onShowLogin }) {
   };
 
   return (
-    <div className="m-auto my-10 flex h-fit w-fit flex-col items-center rounded-xl bg-box-fill p-5">
+    <div className="m-auto my-10 flex h-fit w-fit flex-col items-center rounded-xl bg-box-fill p-5 text-text">
       <div>
-        <h1>Wezen - Regisztráció</h1>
+        <h1>Wezen</h1>
       </div>
       <div className="m-5 flex flex-row items-center justify-center gap-5">
         <button
