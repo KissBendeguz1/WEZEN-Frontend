@@ -8,6 +8,7 @@
   --color-nav-text: var(--nav-text-color);
   --color-white: var(--white-color);
   --color-black: var(--black-color);
+  --color-disable: var(--disable-color);
 }
 
 :root {
@@ -18,6 +19,7 @@
   --nav-text-color: #DDFBDC;
   --white-color: #EAEAEA;
   --black-color: #000000;
+  --disable-color: #474747;
 }
 
 body{

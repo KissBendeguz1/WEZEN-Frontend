@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="flex min-h-screen">
       {pathname !== "/login" && <Header />}
-      <main className="flex-1">
+      <main className="min-w-0 flex-1">
         <Routes>
           <Route path="/login" element={<LoginPage />} />
 
